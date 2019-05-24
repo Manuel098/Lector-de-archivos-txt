@@ -8,3 +8,13 @@ D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\lectorTxt\lectorTxt\obj\D
 D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\lectorTxt\lectorTxt\obj\Debug\lectorTxt.csproj.CoreCompileInputs.cache
 D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\lectorTxt\lectorTxt\obj\Debug\lectorTxt.exe
 D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\lectorTxt\lectorTxt\obj\Debug\lectorTxt.pdb
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\bin\Debug\lectorTxt.exe.config
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\bin\Debug\lectorTxt.exe
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\bin\Debug\lectorTxt.pdb
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\obj\Debug\lectorTxt.csprojAssemblyReference.cache
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\obj\Debug\lectorTxt.Form1.resources
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\obj\Debug\lectorTxt.Properties.Resources.resources
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\obj\Debug\lectorTxt.csproj.GenerateResource.cache
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\obj\Debug\lectorTxt.csproj.CoreCompileInputs.cache
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\obj\Debug\lectorTxt.exe
+D:\Escritorio\Escuela\6° Cuatri\lenguajes y automatas\Lector-de-archivos-txt\lectorTxt\obj\Debug\lectorTxt.pdb
