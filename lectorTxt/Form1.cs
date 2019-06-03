@@ -74,7 +74,8 @@ namespace lectorTxt
         {
             StreamWriter escribir = new StreamWriter(ruta, true);
             bool complete = true, valid = true, temp = false;
-            string estados = "initial";
+            string estados = "initial", way = "";
+
             foreach (char caracter in text.Text)
             {
                 int i;
@@ -83,19 +84,19 @@ namespace lectorTxt
                     switch (estados)
                     {
                         case "initial":
-                            escribir.WriteLine("0d: " + caracter);
+                            way = way + "0d: "+caracter;
                             estados = "Efinal1";
                             break;
                         case "Efinal1":
-                            escribir.WriteLine("1d: " + caracter);
+                            way = way + ", 1d: " + caracter;
                             break;
                         case "e2":
-                            escribir.WriteLine("2d: " + caracter);
+                            way = way + ", 2d: " + caracter;
                             temp = false;
                             estados = "Efinal2";
                             break;
                         case "Efinal2":
-                            escribir.WriteLine("3d: " + caracter);
+                            way = way + ", 3d: " + caracter;
                             break;
                     }
                 }
@@ -106,43 +107,136 @@ namespace lectorTxt
                         switch (caracter)
                         {
                             case '.':
-                                escribir.WriteLine("1 . : " + caracter);
+                                way = way + ", 1p: punto";
                                 estados = "e2";
                                 temp = true;
                                 valid = false;
                                 break;
                             case 'e':
-                                escribir.WriteLine("1E: " + caracter);
+                                way = way + ", 1E: " + caracter;
                                 valid = false;
                                 temp = true;
                                 estados = "e2";
                                 break;
                             case 'E':
-                                escribir.WriteLine("1E: " + caracter);
+                                way = way + ", 1E: " + caracter;
                                 valid = false;
                                 temp = true;
                                 estados = "e2";
                                 break;
                             default:
-                                escribir.WriteLine("Input incorrecto.");
+                                way = way + ", Input incorrecto: " + caracter;
                                 complete = false;
                                 break;
                         }
                     }
                     else
                     {
-                        escribir.WriteLine("Input incorrecto.");
+                        way = way + ", Input incorrecto: " + caracter;
                         complete = false;
                     }
                 }
             }
             if (complete && temp == false)
             {
-                escribir.WriteLine("Completado :D");
+                escribir.WriteLine(way);
+                escribir.WriteLine("Completado es un digito :D");
+                escribir.Close();
             }
             else
             {
-                escribir.WriteLine("FALLO :c");
+                escribir.Close();
+                ruleText();
+            }
+        }
+
+        private void ruleText()
+        {
+            StreamWriter escribir = new StreamWriter(ruta, true);
+            bool complete = true, valid = true, temp = false;
+            string estados = "initial", way = "";
+
+            foreach (char caracter in text.Text)
+            {
+                int i;
+                if (char.IsLetter(caracter))
+                {
+                    switch (estados)
+                    {
+                        case "initial":
+                            way = way + "0w: " + caracter;
+                            estados = "Efinal1";
+                            break;
+                        case "Efinal1":
+                            way = way + ", 5w: " + caracter;
+                            break;
+                        case "e6":
+                            way = way + ", 6w: " + caracter;
+                            temp = false;
+                            estados = "Efinal2";
+                            break;
+                        case "Efinal2":
+                            way = way + ", 7w: " + caracter;
+                            break;
+                    }
+                }
+                else
+                {
+                    if (int.TryParse(caracter.ToString(), out i))
+                    {
+                        switch (estados)
+                        {
+                            case "initial":
+                                way = way + "0d: " + caracter;
+                                estados = "Efinal1";
+                                break;
+                            case "Efinal1":
+                                way = way + ", 5d: " + caracter;
+                                break;
+                            case "e6":
+                                way = way + ", 6d: " + caracter;
+                                temp = false;
+                                estados = "Efinal2";
+                                break;
+                            case "Efinal2":
+                                way = way + ", 7d: " + caracter;
+                                break;
+                        }
+                    }
+                    else
+                    {
+                        if (valid)
+                        {
+                            switch (caracter)
+                            {
+                                case '_':
+                                    way = way + ", 5g: _";
+                                    estados = "e6";
+                                    temp = true;
+                                    valid = false;
+                                    break;
+                                default:
+                                    way = way + ", Input incorrecto: " + caracter;
+                                    complete = false;
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            way = way + ", Input incorrecto: " + caracter;
+                            complete = false;
+                        }
+                    }
+                }
+            }
+            if (complete && temp == false)
+            {
+                escribir.WriteLine(way);
+                escribir.WriteLine("Completado es un texto :D");
+            }
+            else
+            {
+                escribir.WriteLine("La cadena es erronea");
             }
             escribir.Close();
         }
