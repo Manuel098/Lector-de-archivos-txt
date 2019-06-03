@@ -210,11 +210,19 @@ namespace lectorTxt
                             switch (caracter)
                             {
                                 case '_':
-                                    way = way + ", 5g: _";
-                                    estados = "e6";
-                                    temp = true;
-                                    valid = false;
-                                    break;
+                                    if (estados == "initial")
+                                    {
+                                        complete = false;
+                                        break;
+                                    }
+                                    else
+                                    {
+                                        way = way + ", 5g: _";
+                                        estados = "e6";
+                                        temp = true;
+                                        valid = false;
+                                        break;
+                                    }
                                 default:
                                     way = way + ", Input incorrecto: " + caracter;
                                     complete = false;
