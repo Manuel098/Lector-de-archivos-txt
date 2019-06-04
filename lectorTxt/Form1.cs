@@ -73,12 +73,15 @@ namespace lectorTxt
         private void rule()
         {
             StreamWriter escribir = new StreamWriter(ruta, true);
-            bool complete = true, valid = true, temp = false;
+            bool complete = true, valid = true, temp = false, letter = false;
             string estados = "initial", way = "";
 
             foreach (char caracter in text.Text)
             {
                 int i;
+                if (char.IsLetter(caracter) && estados == "initial")
+                    letter = true;
+
                 if (int.TryParse(caracter.ToString(), out i))
                 {
                     switch (estados)
@@ -140,13 +143,21 @@ namespace lectorTxt
             if (complete && temp == false)
             {
                 escribir.WriteLine(way);
-                escribir.WriteLine("Completado es un digito :D");
+                escribir.WriteLine("Completado es un digito");
                 escribir.Close();
             }
             else
             {
-                escribir.Close();
-                ruleText();
+                if (letter==true)
+                {
+                    escribir.Close();
+                    ruleText();
+                }
+                else
+                {
+                    escribir.WriteLine("El inout es invalido");
+                    escribir.Close();
+                }
             }
         }
 
@@ -168,15 +179,13 @@ namespace lectorTxt
                             estados = "Efinal1";
                             break;
                         case "Efinal1":
-                            way = way + ", 5w: " + caracter;
+                            way = way + ", 4w: " + caracter;
+                            valid = true;
                             break;
                         case "e6":
-                            way = way + ", 6w: " + caracter;
+                            way = way + ", 5w: " + caracter;
                             temp = false;
-                            estados = "Efinal2";
-                            break;
-                        case "Efinal2":
-                            way = way + ", 7w: " + caracter;
+                            estados = "Efinal1";
                             break;
                     }
                 }
@@ -191,15 +200,13 @@ namespace lectorTxt
                                 estados = "Efinal1";
                                 break;
                             case "Efinal1":
-                                way = way + ", 5d: " + caracter;
+                                way = way + ", 4d: " + caracter;
+                                valid = true;
                                 break;
                             case "e6":
-                                way = way + ", 6d: " + caracter;
+                                way = way + ", 5d: " + caracter;
                                 temp = false;
-                                estados = "Efinal2";
-                                break;
-                            case "Efinal2":
-                                way = way + ", 7d: " + caracter;
+                                estados = "Efinal1";
                                 break;
                         }
                     }
@@ -217,7 +224,7 @@ namespace lectorTxt
                                     }
                                     else
                                     {
-                                        way = way + ", 5g: _";
+                                        way = way + ", 4g: _";
                                         estados = "e6";
                                         temp = true;
                                         valid = false;
@@ -240,7 +247,7 @@ namespace lectorTxt
             if (complete && temp == false)
             {
                 escribir.WriteLine(way);
-                escribir.WriteLine("Completado es un texto :D");
+                escribir.WriteLine("Completado es un texto");
             }
             else
             {
